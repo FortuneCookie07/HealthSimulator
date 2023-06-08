@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isFacingRight = true;
 
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb; //visible in component view
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal"); 
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
