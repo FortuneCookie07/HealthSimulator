@@ -11,9 +11,19 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isFacingRight = true;
 
+    public float maxBMI = 40;
+    public float currentBMI;
+
+    public BMIbar BMIbar;
+
     [SerializeField] private Rigidbody2D rb; //visible in component view
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    void Start() {
+        currentBMI = maxBMI;
+        BMIbar.SetMaxBMI(maxBMI);
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,9 +35,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            loseBMI(5);
+        }
 
         Flip();
     }
+
+    void loseBMI(float loss) {
+        currentBMI -= loss;
+
+        BMIbar.SetBMI(currentBMI);
+    } 
 
     private void FixedUpdate()
     {
