@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxBMI = 40;
     public float currentBMI;
 
-    public BMIbar BMIbar;
+    public bmiBar bmibar;
 
     [SerializeField] private Rigidbody2D rb; //visible in component view
     [SerializeField] private Transform groundCheck;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentBMI = maxBMI;
-        BMIbar.SetMaxBMI(maxBMI);
+        bmibar.SetMaxBMI(maxBMI);
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.C)) 
         {
             LoseBMI(5);
         }
@@ -70,7 +70,13 @@ public class PlayerMovement : MonoBehaviour
     void LoseBMI(float loss)
     {
         currentBMI -= loss;
-        BMIbar.SetBMI(currentBMI);
+        bmibar.SetBMI(currentBMI);
+    }
+
+    void AddBMI(float add)
+    {
+        currentBMI += add;
+        bmibar.SetBMI(currentBMI);
     }
 
     // Called when the player collides with another object
@@ -85,14 +91,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (otherRigidbody != null && otherCapsuleCollider != null)
         {
-            // Apply damage to the player
-            LoseBMI(10);
-
-            // Make the player invincible for a short period to avoid continuous damage
-            StartCoroutine(MakeInvincible());
-        }
+            if (collision.gameObject.CompareTag("Vegetable"))
+            {
+                AddBMI(5);
+            }
+            if (collision.gameObject.CompareTag("JunkFood"))
+            {
+                LoseBMI(10);
+            }
+        
+        }   
     }
-
     IEnumerator MakeInvincible()
     {
         isInvincible = true;
@@ -100,3 +109,4 @@ public class PlayerMovement : MonoBehaviour
         isInvincible = false;
     }
 }
+

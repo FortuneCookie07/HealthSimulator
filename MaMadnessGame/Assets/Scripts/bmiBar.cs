@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BMIbar : MonoBehaviour
+public class bmiBar : MonoBehaviour
 {
     public Slider slider;
     public Gradient BMILevel;
