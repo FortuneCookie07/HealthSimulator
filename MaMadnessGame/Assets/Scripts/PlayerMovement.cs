@@ -20,12 +20,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    void Start() {
+    private bool isInvincible = false; // To avoid taking damage continuously
+
+    void Start()
+    {
         currentBMI = maxBMI;
         BMIbar.SetMaxBMI(maxBMI);
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal"); 
@@ -38,19 +40,13 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            loseBMI(5);
+            LoseBMI(5);
         }
 
         Flip();
     }
 
-    void loseBMI(float loss) {
-        currentBMI -= loss;
-
-        BMIbar.SetBMI(currentBMI);
-    } 
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
@@ -69,5 +65,38 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    void LoseBMI(float loss)
+    {
+        currentBMI -= loss;
+        BMIbar.SetBMI(currentBMI);
+    }
+
+    // Called when the player collides with another object
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isInvincible)
+            return;
+
+        // Check if the collision object has a Rigidbody and a CapsuleCollider
+        Rigidbody2D otherRigidbody = collision.collider.GetComponent<Rigidbody2D>();
+        CapsuleCollider2D otherCapsuleCollider = collision.collider.GetComponent<CapsuleCollider2D>();
+
+        if (otherRigidbody != null && otherCapsuleCollider != null)
+        {
+            // Apply damage to the player
+            LoseBMI(10);
+
+            // Make the player invincible for a short period to avoid continuous damage
+            StartCoroutine(MakeInvincible());
+        }
+    }
+
+    IEnumerator MakeInvincible()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(1f); // Invincibility duration
+        isInvincible = false;
     }
 }
