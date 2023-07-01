@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.61955523, g: 0.9214276, b: 0.97584206, a: 1}
+  m_IndirectSpecularColor: {r: 0.62002844, g: 0.92194325, b: 0.9759981, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 140963200}
   - component: {fileID: 140963202}
   - component: {fileID: 140963201}
+  - component: {fileID: 140963203}
   m_Layer: 0
   m_Name: carrot
   m_TagString: Vegetable
@@ -227,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140963197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.99, y: 7.86, z: 0}
+  m_LocalPosition: {x: 12.41, y: 2.04, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,7 +302,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -335,6 +336,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60daaed3e1ed0c4b9cd6e532e2697f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &140963203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140963197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a35d78560d6340458cae07176a47216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &163989104
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +875,7 @@ GameObject:
   - component: {fileID: 856852056}
   - component: {fileID: 856852055}
   - component: {fileID: 856852054}
+  - component: {fileID: 856852057}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -934,6 +949,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &856852057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856852053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abfd499d41ae4137ba1d8b08e5cb17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vegetablePrefabs:
+  - {fileID: 1998536722738119346, guid: 74072df9ee83b44b697780026025ea83, type: 3}
+  - {fileID: 2438171013607900238, guid: 4a3cbb6a34e644ed1a37b307de8460bc, type: 3}
+  - {fileID: 8377293934457727314, guid: d00ae80e14dda499d9aaa38af36c8079, type: 3}
+  respawnTime: 1
 --- !u!1 &877515065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1360,7 @@ GameObject:
   - component: {fileID: 1201909469}
   - component: {fileID: 1201909471}
   - component: {fileID: 1201909470}
+  - component: {fileID: 1201909472}
   m_Layer: 0
   m_Name: cabbage
   m_TagString: Vegetable
@@ -1343,7 +1376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201909466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: 7.77, z: 0}
+  m_LocalPosition: {x: 25.46, y: -5.39, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1417,7 +1450,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1451,6 +1484,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60daaed3e1ed0c4b9cd6e532e2697f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1201909472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201909466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7e4b8d8840c47db8d15a90ebfae54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &1223627581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1730,7 @@ GameObject:
   - component: {fileID: 1471188967}
   - component: {fileID: 1471188969}
   - component: {fileID: 1471188968}
+  - component: {fileID: 1471188970}
   m_Layer: 0
   m_Name: broccoli
   m_TagString: Vegetable
@@ -1699,7 +1746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471188964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.95, y: 7.65, z: 0}
+  m_LocalPosition: {x: 8.18, y: -6.02, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1773,7 +1820,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1786,7 +1833,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471188964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1807,6 +1854,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60daaed3e1ed0c4b9cd6e532e2697f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1471188970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471188964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4650fe63e6ec40fc93485ebbfdcd3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &1565523369
 GameObject:
   m_ObjectHideFlags: 0
