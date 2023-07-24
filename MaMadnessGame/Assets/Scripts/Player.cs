@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
-            TakeDamage(5);   
+            TakeDamage(5);  
     }
 
     void TakeDamage(int damage)
